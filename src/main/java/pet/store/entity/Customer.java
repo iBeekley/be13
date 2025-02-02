@@ -1,13 +1,13 @@
 package pet.store.entity;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import java.util.Set;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
+@NoArgsConstructor
 @Entity
 public class Customer {
 
@@ -15,12 +15,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
 
-    private String customerName;
-
+    private String customerFirstName;
+    private String customerLastName;
     private String customerEmail;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "customers", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "customers")
     private Set<PetStore> petStores;
 }

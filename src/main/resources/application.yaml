@@ -11,3 +11,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  logging:
+    level:
+      org.springframework.web: DEBUG
+      org.springframework.boot: DEBUG
+      pet.store.controller: DEBUG
+
+  server:
+    tomcat:
+      accesslog:
+        enabled: true
+        pattern: "%h %l %u %t \"%r\" %s %b"
